@@ -11,34 +11,11 @@ function Story() {
 
     console.log(item);
     useEffect(function(){
-        axios.get(` http://hn.algolia.com/api/v1/items/${item}`)
+        axios.get(`https://hn.algolia.com/api/v1/items/${item}`)
         .then((res)=>{
             setItemData(res.data);
         })
     }, [item])
-    
-    // function sol(parent){
-    //     if(parent.children == undefined){
-    //         return;
-    //     }
-    //     let newData = [];
-
-    //     for(let i=0; i<parent.length; i++){
-    //         newData[i] = parent.text
-    //     }
-    //     // let newData = parent.map((comment)=>(
-    //     //     comment.text
-    //     // ))
-
-    //     if(parent.children != undefined && parent.children.length > 0){
-    //         sol(parent.children)
-    //     }
-
-    //     setChildrenComment([...newData]);
-    //     console.log("from sol")
-    //     console.log(childrenComment);
-        
-    // }
 
     console.log(itemData);
   return (
@@ -53,12 +30,12 @@ function Story() {
 
         <div className='flex justify-center m-3'>
         <div className='flex flex-col justify-center items-center bg-green-300 rounded-md w-9/12' >
-        <div className='m-3 w-9/12 text-center '>Comments :  {itemData.text}</div>
+        <div className='m-3 w-9/12 text-center '>Comments : {itemData.text}</div>
         
         { 
-            itemData.children === undefined ? <div></div> : 
+            itemData.children === undefined ? <div>NO Comments</div> : 
             <div className='m-3 w-9/12 text-center' >{
-                itemData.text
+                itemData.children.text
             }
             </div>
         }

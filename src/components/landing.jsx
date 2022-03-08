@@ -36,7 +36,7 @@ function Landing() {
     useEffect(
         function () {
             axios
-                .get(`http://hn.algolia.com/api/v1/search_by_date?query=${search}`)
+                .get(`https://hn.algolia.com/api/v1/search_by_date?query=${search}`)
                 .then((res) => {
                     setHdata(res.data.hits);
                     console.log(res.data.hits);
